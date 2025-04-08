@@ -2,8 +2,8 @@
 Week 11 Coding Assignment: The Lost Temple of Data
 """
 
-import pandas as pd
 import re
+import pandas as pd
 
 def load_artifact_data(excel_filepath):
     """
@@ -53,7 +53,7 @@ def extract_journal_dates(journal_text):
     # Hint: Use re.findall with a raw string pattern for MM/DD/YYYY format.
     # Pattern idea: r"\d{2}/\d{2}/\d{4}"
     # Replace 'pass' with your code
-    date_pattern = r'\d{2}/\d{2}/\d{4}'
+    date_pattern = r'[01]\d/(?:[0-2]\d|3[01])/\d{4}'
     dates_list = re.findall(date_pattern, journal_text)
 
     # return the list of found dates
@@ -77,54 +77,3 @@ def extract_secret_codes(journal_text):
 
     # return the list of found codes
     return secret_codes_list
-
-# --- Optional: Main execution block for your own testing ---
-"""
-if __name__ == '__main__':
-    # Define file paths (adjust if your files are located elsewhere)
-    excel_file = 'artifacts.xlsx'
-    tsv_file = 'locations.tsv'
-    journal_file = 'journal.txt'
-
-    print(f"--- Loading Artifact Data from {excel_file} ---")
-    try:
-        artifacts_df = load_artifact_data(excel_file)
-        print("Successfully loaded DataFrame. First 5 rows:")
-        print(artifacts_df.head())
-        print("\nDataFrame Info:")
-        artifacts_df.info()
-    except FileNotFoundError:
-        print(f"Error: File not found at {excel_file}")
-    except Exception as e:
-        print(f"An error occurred loading artifact data: {e}")
-
-    print(f"\n--- Loading Location Notes from {tsv_file} ---")
-    try:
-        locations_df = load_location_notes(tsv_file)
-        print("Successfully loaded DataFrame. First 5 rows:")
-        print(locations_df.head())
-        print("\nDataFrame Info:")
-        locations_df.info()
-    except FileNotFoundError:
-        print(f"Error: File not found at {tsv_file}")
-    except Exception as e:
-        print(f"An error occurred loading location data: {e}")
-
-    print(f"\n--- Processing Journal from {journal_file} ---")
-    try:
-        with open(journal_file, 'r', encoding='utf-8') as f:
-            journal_content = f.read()
-
-        print("\nExtracting Dates...")
-        dates = extract_journal_dates(journal_content)
-        print(f"Found dates: {dates}")
-
-        print("\nExtracting Secret Codes...")
-        codes = extract_secret_codes(journal_content)
-        print(f"Found codes: {codes}")
-
-    except FileNotFoundError:
-        print(f"Error: File not found at {journal_file}")
-    except Exception as e:
-        print(f"An error occurred processing the journal: {e}")
-"""
