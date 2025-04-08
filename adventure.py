@@ -23,7 +23,6 @@ def load_artifact_data(excel_filepath):
     # return the resulting DataFrame
     return artifact_data
 
-
 def load_location_notes(tsv_filepath):
     """
     Reads location data from a Tab-Separated Value (TSV) file.
@@ -80,6 +79,7 @@ def extract_secret_codes(journal_text):
     return secret_codes_list
 
 # --- Optional: Main execution block for your own testing ---
+"""
 if __name__ == '__main__':
     # Define file paths (adjust if your files are located elsewhere)
     excel_file = 'artifacts.xlsx'
@@ -127,3 +127,4 @@ if __name__ == '__main__':
         print(f"Error: File not found at {journal_file}")
     except Exception as e:
         print(f"An error occurred processing the journal: {e}")
+"""
